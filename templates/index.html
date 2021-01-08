@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2 align = "center">show content</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+          <th scope="col">code content</th>
+          <th scope="col">content</th>
+          <th scope="col">description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in posts %}
+        <tr>
+          <th scope="row">{{post.id}}</th>
+          <td>{{post.name}}</td>
+          <td>{{post.desc}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+</table>
+{% endblock %}
