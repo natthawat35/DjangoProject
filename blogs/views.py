@@ -25,10 +25,10 @@ def addUser(request):
 
     if password == repassword:
         if User.objects.filter(username = username).exists():
-            messages.info(request, 'This username is already.')
+            messages.info(request, 'This username has already been used.')
             return redirect('/register')
         elif User.objects.filter(email = email).exists():
-            messages.info(request, 'This E-mail is already.')
+            messages.info(request, 'This E-mail has already been used.')
             return redirect('/register')
         else:
             user = User.objects.create_user(
@@ -41,7 +41,7 @@ def addUser(request):
             user.save()
             return redirect('/')
     else:
-        messages.info(request, 'Your password is not relate.')
+        messages.info(request, 'Your passwords do not match.')
         return redirect('/register')
 
     
