@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Post
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 def hello(request):
@@ -24,10 +25,10 @@ def addUser(request):
 
     if password == repassword:
         if User.objects.filter(username = username).exists():
-            print('This username is already.')
+            messages.info(request, 'This username is already.')
             return redirect('/register')
         elif User.objects.filter(email = email).exists():
-            print('This E-mail is already.')
+            messages.info(request, 'This E-mail is already.')
             return redirect('/register')
         else:
             user = User.objects.create_user(
@@ -40,7 +41,7 @@ def addUser(request):
             user.save()
             return redirect('/')
     else:
-        print('Your password is not relate.')
+        messages.info(request, 'Your password is not relate.')
         return redirect('/register')
 
     

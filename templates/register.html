@@ -2,6 +2,11 @@
 
 {% block content %}
     <h2 align="center">register form</h2>
+
+    {% for message in messages %}
+        <h2>{{message}}</h2>
+    {% endfor %}
+
     <form action="/addUser/" method="post">
         {% csrf_token %}
         <div class="form-group">
